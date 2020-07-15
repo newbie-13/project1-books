@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>complete</title>
+  </head>
+  <body>
+    <h1>Comment completed!</h1>
+    <form action="{{ url_for('book_page', isbn = isbn) }}" method="post">
+      <button type="submit" name="button">Return</button>
+    </form>
+  </body>
+</html>

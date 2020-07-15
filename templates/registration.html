@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Registration</title>
+  </head>
+  <body>
+    <h1>Registration</h1>
+    <form action="{{ url_for('regac') }}" method="post">
+      <input type="text" name="username" placeholder="username">
+      <br>
+      <input type="password" name="password" placeholder="password">
+      <button type="submit">Register</button>
+    </form>
+  </body>
+</html>

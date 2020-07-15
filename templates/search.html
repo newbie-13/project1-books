@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Search</title>
+  </head>
+  <body>
+    <button type="button" name="button"><a href="{{ url_for('index') }}">Logout</a></button>
+    <h2>Search</h2>
+    <form action="{{ url_for('search_result') }}" method="post">
+      <select name="type">
+        <option value="isbn">ISBN</option>
+        <option value="title">Title</option>
+        <option value="author">Author</option>
+      </select>
+      <input type="text" name="info" placeholder="ISBN/title/author">
+      <button type="submit" name="button">search</button>
+    </form>
+  </body>
+</html>

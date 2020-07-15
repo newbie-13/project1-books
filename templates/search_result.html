@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Search Result</title>
+  </head>
+  <style media="screen">
+    table {
+      width: 800px;
+    }
+    tr {
+      text-align: center;
+    }
+  </style>
+  <body>
+    <button type="button" name="button"><a href="{{ url_for('index') }}">Logout</a></button>
+    <h2>Search result:</h2>
+    <table>
+      <tr>
+        <th>ISBN</th>
+        <th>Title</th>
+        <th>Author</th>
+        <th>Year</th>
+        <th></th>
+      </tr>
+      {% for book in books %}
+        <tr>
+          {% for book_info in book %}
+            <td>{{book_info}}</td>
+          {% endfor %}
+          <form action="{{ url_for('book_page', isbn = book[0]) }}" method="post">
+            <td><button type="submit" name="button">details</button></td>
+          </form>
+        </tr>
+      {% endfor %}
+    </table>
+  </body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>{{book[1]}}</title>
+  </head>
+  <style media="screen">
+    input {
+      width: 800px;
+      height: 200px;
+    }
+    table {
+      width: 800px;
+    }
+    td {
+      text-align: center;
+    }
+  </style>
+  <body>
+    <button type="button" name="button"><a href="{{ url_for('index') }}">Logout</a></button>
+    <h2>{{book[1]}}</h2>
+    <table>
+      <tr>
+        <th>ISBN</th>
+        <th>Title</th>
+        <th>Author</th>
+        <th>Year</th>
+        <th></th>
+      </tr>
+      <tr>
+        {% for book_info in book %}
+          <td>{{book_info}}</td>
+        {% endfor %}
+      </tr>
+    </table>
+      <h3>Reviews</h3>
+      <div>
+        <table>
+          <tr>
+            <th>Rating</th>
+            <th>Comment</th>
+          </tr>
+          {% for rating_and_comment in ratings_and_comments %}
+            <tr>
+              <td>{{ rating_and_comment[0] }}</td>
+              <td>{{ rating_and_comment[1] }}</td>
+            </tr>
+          {% endfor %}
+        </table>
+      </div>
+
+      <form action="{{ url_for('comment', isbn = book[0]) }}" method="post">
+        <select name="rating">
+          <option value=1>1</option>
+          <option value=2>2</option>
+          <option value=3>3</option>
+          <option value=4>4</option>
+          <option value=5 selected>5</option>
+        </select>
+        <br>
+        <textarea name="comment" rows="8" cols="80">Any opinion</textarea>
+        <br>
+        <button type="submit">comment</button>
+      </form>
+
+      <h3>Rating from Goodreads</h3>
+      Average rating: {{book_detail["average_rating"]}}
+      <br>
+      Number of ratings: {{book_detail["work_ratings_count"]}}
+  </body>
+</html>
